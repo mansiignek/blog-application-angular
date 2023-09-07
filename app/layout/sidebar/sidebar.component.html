@@ -1,0 +1,27 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav opened="{{isShow}}" class="example-sidenav"  mode="side">
+     
+      <span class="navItem">
+        <button mat-button (click)="redirectToHome()"><mat-icon>home</mat-icon>Home</button>
+        <mat-divider></mat-divider>
+      </span>
+      <span class="navItem">
+        <button mat-button (click)="redirectToList()"><mat-icon> format_list_bulleted</mat-icon>List</button>
+        <mat-divider></mat-divider>
+      </span>
+      <span class="navItem">
+        <button mat-button (click)="redirectToProfile()"><mat-icon>person</mat-icon>Profile</button>
+        <mat-divider></mat-divider>
+      </span>
+      <span class="navItem">
+        <button mat-button (click)="redirectToPost()"><mat-icon>add_box</mat-icon>Post</button>
+        <mat-divider></mat-divider>
+      </span>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+
+  

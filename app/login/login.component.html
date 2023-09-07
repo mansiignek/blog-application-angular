@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="heading">
+      <h3>Genarate Otp</h3>
+    </div>
+    <div>
+    <form [formGroup]="getMailForm"  class="attractive-form">
+      <mat-form-field>
+        <mat-label>email id:</mat-label>
+        <input matInput id="emailId" formControlName="emailId">
+      </mat-form-field><br>
+
+      <button mat-raised-button type="submit"  class="submit-button"  color="primary" (click)="generateOtp()">send otp</button><br><br>
+    </form>
+  </div>
+    <div *ngIf="genaratedOtp"> 
+      Generated OTP: {{ genaratedOtp }}
+      <form [formGroup]="otpForm"  class="attractive-form">
+        <mat-form-field>
+          <mat-label>otp</mat-label>
+          <input matInput id="otp" formControlName="otp">
+        </mat-form-field><br>
+        <button mat-raised-button type="submit"  class="submit-button"  color="primary" (click)="login()">log in</button>
+      </form>
+    </div>
+  </div>
+
+
+
+

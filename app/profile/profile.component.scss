@@ -1,0 +1,43 @@
+/* Style the blog list container */
+.blog-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Style individual blog items */
+  .blog-item {
+    width: calc(33.33% - 20px); /* Adjust the width as needed for your layout */
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the blog header */
+  .blog-header {
+    margin-bottom: 10px;
+  }
+  
+  .user-info {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .blog-name {
+    font-size: 18px;
+    color: #444;
+  }
+  
+  /* Style the blog content */
+  .blog-content {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Style the category type */
+  .category-type {
+    font-style: italic;
+    color: #888;
+  }
+  

@@ -1,0 +1,30 @@
+
+<div *ngIf="user && user.profileStatus === 'complete'">
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Birthdate:</strong> {{ user.birthday }}</p>
+    <p><strong>Blog Count:</strong> {{ user.countOfBlogs }}</p>
+  
+  <div class="blog-list">
+    <div class="blog-item" *ngFor="let blog of blogs">
+      <div class="blog-header">
+        <span class="user-info">Posted by {{ blog.userId.name }}</span><br>
+        <span class="blog-name">{{ blog.blogName }}</span><br>
+        <span class="user-info"></span>
+      </div>
+      <div class="blog-content">
+        {{ blog.blogDescription }}  ----- {{ blog.categoryId.categoryType }} category
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div *ngIf="user && user.profileStatus !== 'complete'">
+    <p>Your profile is not created!!</p>
+  </div>
+  <div *ngIf="user && user.profileStatus !== 'complete'">
+   
+    <button (click)="createProfile()">Create Profile</button>
+  </div>
+  
+  
