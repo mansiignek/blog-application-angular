@@ -10,9 +10,9 @@
         {{ blog.blogDescription }}  ----- {{ blog.categoryId.categoryType }} category
       </div>
       <button (click)="getComment(blog.id)"> <mat-icon>comment</mat-icon> </button>
-      <div *ngIf="blog.id === selectedBlogId">
+      <!-- <div *ngIf="blog.id === selectedBlogId">
         <p *ngFor="let comment of selectedBlogComments">{{ comment.comments }} commented: {{ comment.userId.name }}</p>
-      </div>
+      </div> -->
     </div>
   </div>
   

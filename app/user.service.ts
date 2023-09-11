@@ -12,13 +12,10 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  
-
   createUser(userRequest: User): Observable<string> {
     return this.http.post<string>(this.baseUrl + '/users/addUsers',userRequest);
   }
   updateUser(id:number,userRequest: User): Observable<string> {
-    console.log(userRequest)
     return this.http.put<string>(this.baseUrl + '/users/' + id,userRequest);
   }
 }

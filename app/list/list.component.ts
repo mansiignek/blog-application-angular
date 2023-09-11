@@ -15,16 +15,12 @@ export class ListComponent {
   constructor(private blogService: BlogService,private snacBar: MatSnackBar,) {} 
 
   ngOnInit() {
-    
     this.blogService.getCategory().subscribe((data: any) => {
       this.category = data;
-      console.log(data)
     });
   }
 
   searchBlog() {
-    console.log(this.searchText);
-    
    if(this.searchText.length != 0){
 
     this.blogService.getBlogByCategory(this.searchText).subscribe(

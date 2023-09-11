@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../blog.service';
+import { CommentComponent } from '../comment/comment.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-blog-home',
@@ -12,7 +14,7 @@ export class BlogHomeComponent implements OnInit {
   selectedBlogId: number | null = null;
   selectedBlogComments: any[] = [];
 
-  constructor(private blogService: BlogService) {} 
+  constructor(private blogService: BlogService,private matDialog: MatDialog) {} 
 
   ngOnInit() {
     
@@ -22,12 +24,15 @@ export class BlogHomeComponent implements OnInit {
     });
   }
   getComment(id:number){
-    this.blogService.getCommentByBlogId(id).subscribe((data:any)=>{
-    this.comments=data;
-    console.log(data);
-    this.selectedBlogId = id;
-    this.selectedBlogComments = data;
-    })
+    let dialogRef = this.matDialog.open(CommentComponent, {
+      height: '400px',
+      width: '600px',
+    });
+    dialogRef.componentInstance.selectedBlogId = id 
+
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
+    });
   }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BlogService } from '../blog.service';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ export class ProfileComponent {
   blogs: any[] = [];
   
 
-  constructor(private userService: BlogService,private matDialog: MatDialog) {}
+  constructor(private userService: BlogService,private matDialog: MatDialog,private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.fetchUserById();
@@ -31,10 +32,9 @@ export class ProfileComponent {
     this.userService.getUserById(id).subscribe(
       (data) => {
         this.user = data;
-        console.log(this.user)
       },
       (error) => {
-        console.error('Error fetching user data:', error);
+        this.snackBar.open(error['error'], '', { duration: 1000 });
       }
     );
   
@@ -51,10 +51,9 @@ export class ProfileComponent {
       this.userService.getBlogById(id).subscribe(
         (data:any) => {
           this.blogs = data;
-          console.log(this.blogs)
         },
         (error) => {
-          console.error('Error fetching user data:', error);
+          this.snackBar.open(error['error'], '', { duration: 1000 });
         }
       );
     
@@ -62,7 +61,7 @@ export class ProfileComponent {
       createProfile(){
         let dialogRef = this.matDialog.open(CreateUserComponent, {
           height: '400px',
-          width: '600px',
+          width: '300px',
         });
         dialogRef.componentInstance.user = this.user; 
 

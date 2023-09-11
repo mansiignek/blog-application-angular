@@ -40,4 +40,33 @@
     font-style: italic;
     color: #888;
   }
-  
+  /* Apply styles to the entire container */
+.profile-container {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Style the paragraphs inside the container */
+.profile-container p {
+  margin: 8px 0;
+}
+
+/* Style the "Create Profile" button */
+.profile-container button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Style the "Create Profile" button on hover */
+.profile-container button:hover {
+  background-color: #0056b3;
+}
+.container{
+  margin-right: 30px;
+}

@@ -1,1 +1,16 @@
-<p>comment works!</p>
+<!-- Apply CSS styles inline -->
+<b>Comments</b>
+<div class="comments">
+    <div *ngFor="let comment of comments">
+        <p *ngIf="comment.userId.profileStatus == 'complete'" >{{ comment.comments }} --------commented By: {{ comment.userId.name }}</p>
+        <p *ngIf="comment.userId.profileStatus == 'pending'" >{{ comment.comments }}</p>
+    </div>
+</div>
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="attractive-form">
+    <mat-form-field>
+        <mat-label>Comment:</mat-label>
+        <input matInput id="comment" formControlName="comment">
+    </mat-form-field><br>
+    <button mat-raised-button type="submit" [disabled]="!commentForm.valid" class="submit-button" color="primary">Comment</button>
+</form>
+

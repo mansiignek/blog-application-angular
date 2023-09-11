@@ -1,5 +1,6 @@
-
+<div class="container">
 <div *ngIf="user && user.profileStatus === 'complete'">
+
     <p><strong>Name:</strong> {{ user.name }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Birthdate:</strong> {{ user.birthday }}</p>
@@ -26,5 +27,6 @@
    
     <button (click)="createProfile()">Create Profile</button>
   </div>
+</div>
   
   

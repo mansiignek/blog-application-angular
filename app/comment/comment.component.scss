@@ -1,0 +1,29 @@
+
+/* styles.css */
+
+/* Style the comments section */
+.comments {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+/* Style the comment text when the profile status is 'complete' */
+.comments p{
+   
+    font-weight: bold;
+}
+
+/* Style the comment text when the profile status is 'pending' */
+.comments p {
+    
+    font-style: italic;
+}
+
+/* Style the submit button */
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}

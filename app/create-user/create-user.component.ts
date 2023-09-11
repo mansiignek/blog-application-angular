@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../model/User';
@@ -22,9 +22,9 @@ export class CreateUserComponent {
 
   initForm(){
   this.createUserForm = new FormGroup({
-    userName: new FormControl(''),
-    emailId: new FormControl(''),
-    BirthDate: new FormControl(''),
+    userName: new FormControl('',[Validators.required]),
+    emailId: new FormControl('',[Validators.required,Validators.email]),
+    BirthDate: new FormControl('',[Validators.required]),
   });
 }
   onSubmit(){

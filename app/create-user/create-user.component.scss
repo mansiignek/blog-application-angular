@@ -1,31 +1,52 @@
-/* styles.css */
 
-/* Center the container horizontally and vertically */
+/* Apply styles to the container */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* This ensures the form is centered vertically on the viewport */
+  text-align: center;
+  margin-left: 20px;
+  width: 80%;
+  max-width: 400px;
 }
 
-/* Style the form elements */
+/* Style the heading */
 .heading {
-  margin-bottom: 20px;
+  /* Change this to your desired background color */
+  color: black;
+  padding: 10px;
 }
 
-.mat-form-field {
-  width: 200%;
-}
-
-.mat-button-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.submit-button {
-  width: 100%;
-  max-width: 200px; /* Adjust as needed */
+/* Style the form */
+.attractive-form {
   margin-top: 20px;
 }
+
+/* Style the form fields */
+mat-form-field {
+  width: 100%;
+}
+
+/* Style the input fields */
+mat-label {
+  font-weight: bold;
+}
+
+/* Style the submit button */
+.submit-button {
+  margin-top: 20px;
+  background-color: #3f51b5; /* Change this to your desired button color */
+  color: white;
+}
+
+/* Style the error messages */
+mat-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Style the input fields and labels on focus */
+mat-form-field.mat-focused .mat-form-field-label,
+mat-form-field.mat-focused .mat-input-element {
+  color: #007bff; /* Change this to your desired focus color */
+}
+
 

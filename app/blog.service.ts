@@ -31,10 +31,12 @@ getBlogById(id: number) {
   return this.http.get(this.baseUrl + '/blog-by-user-id/' + id);
 }
 createBlog(blogRequest:any ): Observable<string> {
-  console.log(blogRequest)
   return this.http.post<string>(this.baseUrl + '/addBlog',blogRequest);
 }
 getCommentByBlogId(id: number) {
   return this.http.get(this.baseUrl + '/commentByBlogs/' + id);
+}
+addComment(commentRequest:any ): Observable<string> {
+  return this.http.post<string>(this.baseUrl + '/addComment',commentRequest);
 }
 }

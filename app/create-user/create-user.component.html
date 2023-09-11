@@ -1,21 +1,27 @@
 
 <div class="container">
     <div class="heading">
-      <h3>Create new account!!</h3>
+      <h3>Create account!!</h3>
     </div>
     <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()" class="attractive-form">
       <mat-form-field>
         <mat-label>User Name:</mat-label>
         <input matInput id="userName" formControlName="userName">
+        <mat-error *ngIf="createUserForm.get('userName')?.hasError('required') && (createUserForm.get('userName')?.touched || createUserForm.get('userName')?.dirty)">
+          User Name is required
+        </mat-error>
       </mat-form-field><br>
   
   
       <mat-form-field>
         <mat-label>Birth Date:</mat-label>
         <input matInput id="BirthDate" type="date" formControlName="BirthDate">
+        <mat-error *ngIf="createUserForm.get('BirthDate')?.hasError('required') && (createUserForm.get('BirthDate')?.touched || createUserForm.get('BirthDate')?.dirty)">
+          Birth Date is required
+        </mat-error>
       </mat-form-field><br>
   
-      <button mat-raised-button type="submit" [disabled]="!createUserForm.valid" class="submit-button"  color="primary">Submit</button>
+      <button mat-raised-button type="submit"  class="submit-button"  color="primary">Submit</button>
     </form>
     
   </div>

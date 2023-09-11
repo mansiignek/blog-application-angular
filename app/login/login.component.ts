@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { loginRequest } from '../model/loginRequest';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,10 +15,11 @@ export class LoginComponent implements OnInit {
   otpForm:FormGroup
   genaratedOtp: string = '';
   ans:any
+  showOtpFields: boolean = false;
 
-  constructor(private authservices:AuthService,private router: Router) {
+  constructor(private authservices:AuthService,private router: Router,private snackBar: MatSnackBar) {
     this.getMailForm = new FormGroup({
-      emailId: new FormControl('', [Validators.required]),
+      emailId: new FormControl('',[Validators.required,Validators.email]),
     });
 
     this.otpForm = new FormGroup({
@@ -38,16 +40,17 @@ export class LoginComponent implements OnInit {
 
     this.authservices.generateOtp(request).subscribe({
       next: (response) => {
-        console.log(response);
         localStorage.setItem("email",emailId);
         this.genaratedOtp = response;
+        this.showOtpFields = true;
       },
       error: (error) => {
-        console.log(error);
+        this.snackBar.open(error['error'], '', { duration: 1000 });
       },
     });
 }
 login() {
+ 
   let request = {
     email: this.getMailForm.controls['emailId'].value,
     otp: this.otpForm.controls['otp'].value
@@ -55,19 +58,15 @@ login() {
 
   this.authservices.authenticate(request).subscribe({
     next: (response) => {
-      console.log(response)
       this.ans = response
-      console.log(this.ans)
       const a=this.ans.token
       const id= this.ans.userId
-      console.log(a)
-      console.log(id)
       localStorage.setItem("token",a)
       localStorage.setItem("userId",id)
       this.router.navigate(['/user']);
     },
     error: (error) => {
-      console.error(error);
+      this.snackBar.open(error['error'], '', { duration: 1000 });
     }
   });
 }

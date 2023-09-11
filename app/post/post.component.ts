@@ -24,7 +24,6 @@ export class PostComponent {
   getCategory(){
     this.blogService.getCategory().subscribe((data: any) => {
       this.category = data;
-      console.log(data)
     });
   }
  
@@ -55,7 +54,6 @@ export class PostComponent {
     }
     this.blogService.createBlog(request).subscribe({next: (response) => {
       if (response) {
-        console.log(response)
         this.snacBar.open(response, '', { duration: 1000 });
        
       }

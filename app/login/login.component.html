@@ -1,25 +1,30 @@
 <div class="container">
-    <div class="heading">
-      <h3>Genarate Otp</h3>
-    </div>
-    <div>
+    
+    <div  *ngIf ="!showOtpFields">
+      <div class="heading">
+        <h3>Genarate Otp</h3>
+      </div>
     <form [formGroup]="getMailForm"  class="attractive-form">
       <mat-form-field>
         <mat-label>email id:</mat-label>
         <input matInput id="emailId" formControlName="emailId">
+        <mat-error *ngIf="getMailForm.get('emailId')?.hasError('required') && (getMailForm.get('emailId')?.touched || getMailForm.get('emailId')?.dirty)">
+          emailId is required
+        </mat-error>
       </mat-form-field><br>
 
-      <button mat-raised-button type="submit"  class="submit-button"  color="primary" (click)="generateOtp()">send otp</button><br><br>
+      <button mat-raised-button type="submit"  class="submit-button"  color="primary" (click)="generateOtp()" [disabled]="!getMailForm.valid">send otp</button><br><br>
     </form>
   </div>
-    <div *ngIf="genaratedOtp"> 
-      Generated OTP: {{ genaratedOtp }}
+  <div *ngIf="showOtpFields">
+      Generated OTP: {{ genaratedOtp }}<br><br>
+      
       <form [formGroup]="otpForm"  class="attractive-form">
         <mat-form-field>
           <mat-label>otp</mat-label>
           <input matInput id="otp" formControlName="otp">
         </mat-form-field><br>
-        <button mat-raised-button type="submit"  class="submit-button"  color="primary" (click)="login()">log in</button>
+        <button mat-raised-button type="submit"  class="submit-button"  color="primary" (click)="login()" [disabled]="!getMailForm.valid">log in</button>
       </form>
     </div>
   </div>
